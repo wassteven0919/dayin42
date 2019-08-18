@@ -1,0 +1,1 @@
+cat /etc/passwd |grep -v "\#" | cut -d : -f 1 | rev | sort -r | awk 'NR%2==0 ||NR==1' | awk 'NR >= ENVIRON["FT_LINE1"] && NR <= ENVIRON["FT_LINE2"]' |  paste -s -d "," - | sed -e 's/,/, /g' | sed 's/$/./'
